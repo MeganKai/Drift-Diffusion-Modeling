@@ -1,0 +1,40 @@
+---
+title: "Drift Diffusion Modeling"
+author: "Megan Kairiss"
+date: "April 12, 2019"
+output: pdf_document
+header-includes:
+  \usepackage{graphicx}
+  \usepackage{float}
+  \usepackage{tabto}
+  \setlength\parindent{24pt}
+---
+# Introduction and Background
+Attempts of using diffusion processes to explain the noisy process of decision making has been around for more than 40 years, yet using these diffusion models on the choice reaction time of animal behaviour is still yet to be mainstream. We present an application of Drift Diffusion modeling, alternatively referred to as a two-alternative forced choice, fitted to mouse subjects under an ambiguous choice response task. Recent advances in computational methods have enabled us to compute a full hierarchical bayesian posterior distribution of Drift Diffusion model parameters, with the aide of MCMC sampling (Markov Chain  Monte Carlo) to estimate the joint distribution of free parameters; with the assumption that computing parameter estimates across a population can strengthen the recovery of parameters of the individual.
+
+
+# Theoretical Formalization
+Drift Diffusion models allow for an experimental design with only two alternative options. As first proposed by Ratcliff (1978), subjects noisely fluctuate between two options until a certain decision threshold has been reached, akin to the vibrating frequencies of a tuning fork. This "fluctuation" can be represented by a drift rate; parameterized in the model as v. This slope must have a starting point, which we parameterize as t0. The subject samples between these two alternative options, each having independent decision thresholds, hereonout referred to  as A- and A+.
+
+\begin{figure}[H]
+  \caption{Visualization of Drift Diffusion model parameters (CITATION)}
+  \includegraphics{/home/megan/Desktop/Drift-Diffusion/paper/ddm.png}
+\end{figure}
+
+
+
+# Experimental Approach
+### Experimental Design
+### Data Collection
+
+### Data Processing
+
+### Model Application
+
+#### HDDM
+
+#### Fast-DM
+
+## Discussion
+
+## References
