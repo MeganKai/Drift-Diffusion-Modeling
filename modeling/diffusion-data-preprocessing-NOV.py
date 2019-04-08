@@ -6,7 +6,7 @@ import sys
 import os
 def main():
     all_data = pd.DataFrame()
-    path = "/home/megan/Desktop/Drift-Diffusion/data/raw-data"
+    path = "/home/megan/Desktop/Drift-Diffusion/data/data-nov"
     files = glob(path +'/*.txt')
     all_data = pd.DataFrame()
     for each_file in files:
@@ -65,7 +65,7 @@ def main():
         print(correct_df)
         all_data = pd.concat([all_data,correct_df],0)
     all_data = all_data.sort_values(['subj_idx','date'],ascending=[True,True])
-    all_data.to_csv('diffusion-feb-final.csv',index=False)
+    all_data.to_csv('diffusion-nov-final.csv',index=False)
 main()
   
 

@@ -4,13 +4,25 @@ import matplotlib.pyplot as plt
 
 # Simple model build; using gradient ascent optimization
 # Draws posterior samples
+def GelmanRubinModel(data):
+    models = list()
+    for i in range(5):
+        m = hddm.HDDM(data,p_outlier=0.05)
+        m.find_starting_values
+        m.sample(5000,burn=20)
+        models.append(m)
+    hddm.analyze.gelman_rubin(models)
+
 def simpleModel(data):
-    
-    m = hddm.HDDM(data,p_outlier=0.05)
+    print("Fitting model...")
+    m = hddm.HDDM(data,p_outlier=0.05,depends_on={'v':'stim'})
     m.find_starting_values()
-    m.sample(20,burn=1)
+    m.sample(2000,burn=20)
 
+    print("Print fitted parameters and model stats")
+    m.print_stats()
 
+    # RT Distribuitions of individual subjects
     fig = plt.figure()
     ax = fig.add_subplot(111,xlabel='RT',ylabel='count',title='RT Distributions')
     for i,subj_data in data.groupby('subj_idx'):
@@ -18,10 +30,11 @@ def simpleModel(data):
     plt.savefig('hddm_demo_fig.pdf')
     models = []
 
+    print("Plotting posterior distributions and theoretical RT distributions")
     stats = m.gen_stats()
     stats[stats.index.isin(['a','a_std','a_subj.0','a_subj.1'])]
     m.plot_posteriors(['a','t','v','a_std'])
-    plt.savefig("test.pdf")
+    plt.savefig("test")
 
 def main():
 
@@ -29,7 +42,7 @@ def main():
  
     data = hddm.load_csv("/home/megan/Desktop/Drift-Diffusion/data/diffusion-feb.csv")
 
-    simpleModel(data)
-
+    #simpleModel(data)
+    GelmanRubinModel(data)
 
 main()
